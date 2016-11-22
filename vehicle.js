@@ -7,6 +7,21 @@ function Vehicle(x, y) {
   this.acceleration = createVector(0, 0);
   this.velocity = createVector(0, 0);
 
+  var val;
+  var rx, ry, lx1, ly1, lx2, ly2;
+  var black, grey, yellow;
+
+  black = color(0, 0, 0);
+  yellow = color(149, 165, 16);
+  grey = color(149, 165, 166);
+
+  rx = 5;
+  ry = 5;
+  lx1 = (rx + 10) - 1;
+  ly1 = (ry + 10) - 1;
+  lx2 = 75;
+  ly2 = (ry + 10) - 1;
+
 
   this.applyForce = function(force) {
     this.acceleration.add(force);
@@ -59,14 +74,49 @@ function Vehicle(x, y) {
           rect(this.position.x, this.position.y, 10, 10);
 
 
-          fill(0);
-          stroke(149, 165, 16);
+          var min = 0;
+          var max = 360;
+          val = Math.round(Math.random() * (max - min)) + min;
+
+          if(val === 100) {
+            rx = -5;
+            ry = -5;
+            lx1 = rx + 1;
+            ly1 = ry + 1;
+            lx2 = -75;
+            ly2 = rx + 1;
+          } else if(val === 111) {
+            rx = 5;
+            ry = -5;
+            lx1 = (rx + 10) - 1;
+            ly1 = ry + 1;
+            lx2 = (rx + 10) - 1;
+            ly2 = -75;
+          } else if(val === 313) {
+            rx = 5;
+            ry = 5;
+            lx1 = (rx + 10) - 1;
+            ly1 = (ry + 10) - 1;
+            lx2 = 75;
+            ly2 = (ry + 10) - 1;
+          } else if(val === 248) {
+            rx = -5;
+            ry = 5;
+            lx1 = rx + 1;
+            ly1 = (ry + 10) - 1;
+            lx2 = rx + 1;
+            ly2 = 75;
+          }
+
           push();
           translate(this.position.x, this.position.y);
-          rect(-3, -3, 10, 10);
-          stroke(0)
-          line(0, 0, 50, 0);
-          line(0, 0, 0, 30);
+          stroke(black);
+          line(lx1, ly1, lx2, ly2);
+          fill(grey);
+          rect(0, 0, 10, 10);
+          fill(black);
+          stroke(yellow);
+          rect(rx, ry, 10, 10)
           pop();
       }
     }

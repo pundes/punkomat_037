@@ -8,11 +8,11 @@ function setup() {
   createCanvas(windowWidth,windowHeight);
 
   if(windowWidth < 1280) {
-    for (var i = 0; i < 200; i++) {
+    for (var i = 0; i < 170; i++) {
       vehicles.push(new Vehicle(random(width), random(height)));
     }
   } else {
-    for (var i = 0; i < 250; i++) {
+    for (var i = 0; i < 230; i++) {
       vehicles.push(new Vehicle(random(width), random(height)));
     }
   }
